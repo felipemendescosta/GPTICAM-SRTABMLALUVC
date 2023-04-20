@@ -4,6 +4,10 @@ import numpy as np
 from keras.models import load_model
 from gtts import gTTS
 from playsound import playsound
+import time 
+
+t = 2
+time.sleep(t) # exemplo 
 
 
 cap = cv2.VideoCapture(0) #abrir a camera usnado o open cv
@@ -37,7 +41,7 @@ while True: #loop finito
                     y_max = y
                 if y < y_min:
                     y_min = y
-            cv2.rectangle(img, (x_min-50, y_min-50), (x_max+50, y_max+50), (0, 255, 0), 2) # já dimensionado agora o desenho e feito usando o cv2
+            cv2.rectangle(img, (x_min-50, y_min-50), (x_max+50, y_max+1), (0, 255, 0), 2) # já dimensionado agora o desenho usando o cv2
 
             try:
                 imgCrop = img[y_min-50:y_max+50,x_min-50:x_max+50] # a imagem recortada com a mão
@@ -46,11 +50,11 @@ while True: #loop finito
                 normalized_image_array = (imgArray.astype(np.float32) / 127.0) - 1
                 data[0] = normalized_image_array
                 prediction = model.predict(data) # agora com a imagem tratada ele faz a predição de qual classe a forma da mão pertence
-                indexVal = np.argmax(prediction) # por meio da probabilidade ele indica o indice do array (classes) na linha 10
+                indexVal = np.argmax(prediction) # por meio da probabilidade ele indica o indice do array (classes) na linhaclea 10
                 indice = classes[indexVal]
                 #print(classes[indexVal])
-                cv2.putText(img,classes[indexVal],(x_min-50,y_min-65),cv2.FONT_HERSHEY_COMPLEX,3,(0,0,255),5) #puttext cria um texto dentro da imagem já estranindo da variavel classes qual e a label predominate
-                print("letras geradas" + indice)
+                cv2.putText(img,classes[indexVal],(x_min-120,y_min-1),cv2.FONT_HERSHEY_COMPLEX,3,(0,0,255),5,) #puttext cria um texto dentro da imagem já estranindo da variavel classes qual e a label predominate
+                print("letra gerada " + indice)
                 
                 # if indice == 'A':
                 #     audio_text = ('A')
