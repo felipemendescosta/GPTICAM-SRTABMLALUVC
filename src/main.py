@@ -41,8 +41,10 @@ while True: #loop finito
                     y_max = y
                 if y < y_min:
                     y_min = y
-            cv2.rectangle(img, (x_min-50, y_min-50), (x_max+50, y_max+1), (0, 255, 0), 2) # já dimensionado agora o desenho usando o cv2
-
+            cv2.rectangle(img, (80,10), (200,100), (225,0,0),-1) # já dimensionado agora o desenho usando o cv2
+            #x_min-50, y_min-50
+            #x_max+50, y_max+1
+            #0, 255, 0
             try:
                 imgCrop = img[y_min-50:y_max+50,x_min-50:x_max+50] # a imagem recortada com a mão
                 imgCrop = cv2.resize(imgCrop,(224,224)) # aqui redimenciona a imagem e transforma ela em uma array
@@ -53,7 +55,9 @@ while True: #loop finito
                 indexVal = np.argmax(prediction) # por meio da probabilidade ele indica o indice do array (classes) na linhaclea 10
                 indice = classes[indexVal]
                 #print(classes[indexVal])
-                cv2.putText(img,classes[indexVal],(x_min-120,y_min-1),cv2.FONT_HERSHEY_COMPLEX,3,(0,0,255),5,) #puttext cria um texto dentro da imagem já estranindo da variavel classes qual e a label predominate
+                cv2.putText(img,classes[indexVal],(100,100),cv2.FONT_HERSHEY_COMPLEX,4,(225,225,255),5) #puttext cria um texto dentro da imagem já estranindo da variavel classes qual e a label predominate
+                #x_min-120,y_min-1
+                #3,(0,0,255),5)
                 print("letra gerada " + indice)
                 
                 # if indice == 'A':
