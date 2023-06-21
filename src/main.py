@@ -4,7 +4,8 @@ import numpy as np
 from keras.models import load_model
 from gtts import gTTS
 from playsound import playsound
-import time 
+import time
+from classe import letters
 
 t = 2
 time.sleep(t) # exemplo 
@@ -65,7 +66,7 @@ while True: #loop finito
                 #     tts = gTTS(audio_text,lang='pt-br')
                 #     tts.save("audioA.mp3")
                 #     playsound("audioA.mp3")
-
+                
                 while indice:
                     if indice == 'A':
                         audio_text = ('A')
